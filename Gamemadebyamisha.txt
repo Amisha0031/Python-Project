@@ -1,0 +1,58 @@
+from random import choice
+
+all_choices=['rock','paper','scissors']
+CPU_score=0
+user_score=0
+
+while True:
+    CPU_choice=choice(all_choices)
+    user_input=input("\nEnter 1 for Rock \nEnter 2 for Paper \nEnter 3 for Scissors \nEnter x to quit \nEnter the choice: ")
+    """valid user input"""
+    if user_input=="1":
+        user_choice="rock"
+        choice_made="valid"
+    elif user_input=="2":
+        user_choice="paper"
+        choice_made="valid"
+    elif user_input=="3":
+        user_choice="scissors"
+        choice_made="valid"
+    elif user_input=="x":
+        choice_made="quit"
+    else:
+        print("Invalid input. please try again!!!")
+
+    """if user input is valid"""
+    if choice_made=="valid":
+        print(f"CPU Choice:{CPU_choice} and User Select:{user_choice}")
+        if user_choice==CPU_choice:
+            print(f"Both players selected {user_score}\nIt's a Tie!")
+        else:
+            if user_choice=="rock":
+                if CPU_choice=="paper":  
+                    print("You lose...and CPU Wins!!!..Paper Covers rock.")
+                    CPU_score+=1
+                else:
+                    print("You Wins!!!...rock smashes scissors.")
+                    user_score+=1
+            if user_choice=="paper":
+                if CPU_choice=="scissors":
+                    print("You lose... and CPU Wins!!!...scissors cut paper.")
+                    CPU_score+=1
+                else:
+                    print("you wins!!!..Paper Covers rock.")
+                    user_score+=1
+            if user_choice=="scissors":
+                if CPU_choice=="rock":
+                    print("You lose... and CPU Wins!!!....rock smashes scissor.")
+                    CPU_score+=1
+                else:
+                    print("You Wins!!!...scissors cuts paper.")
+                    user_score+=1
+    print(f"Current Score:CPU={CPU_score} and User={user_score}")
+
+    """if user is to quit,end program"""
+    if choice_made=="quit":
+        print("Thanks For Playing..")
+        print(f"Final Score={CPU_score} and user={user_score}")
+        break
